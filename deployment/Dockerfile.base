@@ -1,0 +1,13 @@
+# Base image with all dependencies pre-installed
+# Build once, reuse forever (unless requirements.txt changes)
+
+FROM python:3.10-slim
+
+WORKDIR /app
+
+# Install dependencies (this is the slow part)
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Set PYTHONPATH
+ENV PYTHONPATH=/app

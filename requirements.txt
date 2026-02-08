@@ -1,0 +1,15 @@
+flask
+flask-cors
+google-adk
+langchain
+langchain-community
+langchain-google-vertexai
+faiss-cpu
+pypdf
+google-cloud-aiplatform
+python-dotenv
+openai
+sentence-transformers
+gunicorn
+tavily-python
+requests

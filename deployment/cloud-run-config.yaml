@@ -1,0 +1,46 @@
+# Cloud Run Service Configuration
+# This file contains recommended settings to prevent cold starts and optimize performance
+
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: sport-expert-chatbot
+  labels:
+    cloud.googleapis.com/location: us-central1
+  annotations:
+    # Keep at least 1 instance always running to avoid cold starts
+    run.googleapis.com/launch-stage: BETA
+spec:
+  template:
+    metadata:
+      annotations:
+        # Minimum instances: prevent cold starts (costs more but faster)
+        autoscaling.knative.dev/minScale: '1'
+        # Maximum instances
+        autoscaling.knative.dev/maxScale: '10'
+        # CPU throttling: keep CPU allocated even when no requests
+        run.googleapis.com/cpu-throttling: 'false'
+        # Startup CPU boost
+        run.googleapis.com/startup-cpu-boost: 'true'
+    spec:
+      containerConcurrency: 80
+      timeoutSeconds: 120
+      containers:
+      - image: us-central1-docker.pkg.dev/coastal-burner-480319-i7/sport-expert/chatbot:latest
+        ports:
+        - name: http1
+          containerPort: 8080
+        resources:
+          limits:
+            # Allocate sufficient resources
+            cpu: '2'
+            memory: 2Gi
+        env:
+        - name: GOOGLE_CLOUD_PROJECT
+          value: 'coastal-burner-480319-i7'
+        - name: GOOGLE_CLOUD_LOCATION
+          value: 'us-central1'
+        - name: GOOGLE_GENAI_USE_VERTEXAI
+          value: 'True'
+        - name: TAVILY_API_KEY
+          value: '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'
