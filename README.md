@@ -24,7 +24,9 @@ A production-ready **Multi-Agent System** that answers sports questions by intel
 
 ```text
 MultiAgentAssignment/
-├── knowledge_base/         # Source PDFs (Cricket.pdf, Tennis.pdf)
+├── knowledge_base/         # Source PDFs
+│   ├── cricket.pdf
+│   └── Tennis.pdf
 ├── faiss_index/            # Generated Vector Store
 ├── src/
 │   ├── agents/
@@ -38,14 +40,25 @@ MultiAgentAssignment/
 │   ├── ui/                 # Frontend assets (index.html, script.js)
 │   └── main.py             # Flask API Entry Point
 ├── deployment/             # All deployment-related files
-│   ├── deploy-cloud-build.sh
-│   ├── cloud-run-config.yaml
-│   ├── Dockerfile.base
-│   └── Dockerfile.ui
+│   ├── deploy-cloud-build.sh    # Cloud Build deployment script
+│   ├── cloud-run-config.yaml    # Cloud Run service configuration
+│   ├── Dockerfile.base          # Base image Dockerfile
+│   └── Dockerfile.ui            # UI container Dockerfile
+├── Presentation/           # Project presentation materials
+│   ├── Multi-Agent-Sports-Intelligence-System-By-Tausif.pdf
+│   └── Multi-Agent-Sports-Intelligence-System-By-Tausif.mp4
+├── tests/                  # Test files
+├── data/                   # Additional data files
+├── .env.example            # Environment variables template
+├── .gitignore              # Git ignore rules
 ├── deploy.sh               # Quick deploy script
+├── setup-github.sh         # GitHub repository setup script
 ├── Dockerfile              # Production container config
 ├── requirements.txt        # Python dependencies
-└── README.md               # You are here
+├── README.md               # You are here
+├── WALKTHROUGH.md          # Implementation walkthrough
+├── PERFORMANCE_OPTIMIZATION.md  # Performance tuning guide
+└── GITHUB_SETUP.md         # GitHub setup instructions
 ```
 
 ## ⚡ Quick Start (Local)
