@@ -56,3 +56,5 @@ htmlcov/
 *.tmp
 *.bak
 .cache/
+Presentation/*.mp4
+*.mp4
